@@ -12,6 +12,9 @@ function SalesP (ID ,fname, lname, bd, phone, region, pw, tc, ts) {
     this.ts = ts,
 }
 
+S000001
+
+
 function SalesM (ID ,fname, lname, bd, pw) {
 	this.ID = ID
     this.fname = fname,
@@ -19,9 +22,11 @@ function SalesM (ID ,fname, lname, bd, pw) {
     this.bd = bd
     this.pw = pw
 }
+ADMIN
+ADMIN
 
 // bname is business name, c1n is contact one name, c1p is contact one phone, dsizem is monetary deal size, dsizeu is deal size in numebr of users,
-//  sdate is start date, c date is close date, stage is which stage the deal is in, notes is any additional notes or deal closed reason
+// sdate is start date, c date is close date, stage is which stage the deal is in, notes is any additional notes or deal closed reason
 function Deals (dealID, repID, bname, c1n, c1p, c2n, c2n, dtype, dsizem, dsizeu, sdate, cdate, stage, notes) {
 	this.dealID = dealID
     this.repID = repID
@@ -50,9 +55,9 @@ const dealstage = {
     Closed = 6
 }
 
+
 //dealtype enumerator allows easier input of deal types
 const dealtype = {
     Educational = 0,
     Coporate = 1,
-    Other = 2,
 }
