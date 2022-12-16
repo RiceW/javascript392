@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Sales Manager</h1>
+
+<style>
+table, th, td {
+  border: 1px solid black;
+}
+</style>
+
+<h1>Sales Rep Deals</h1>
+
+<table>
+  <tr>
+      <th>Sales Rep</th>
+      <th>Phone Number</th>
+      <th>Region</th>
+      <th>User Name</th>
+      <th>Password</th>
+      <th>Delete</th>
+      
+  </tr>
+  <tr>
+      <tr id = "row1">
+      <td><input type="text" name="sales_R1"/></td>
+      <td><input type="text" name="R1_Phone#"/></td>
+      <td><input type="text" name="R1_region"/></td>
+      <td><input type="text" name="R1_username"/></td>
+      <td><input type="text" name="R1_password"/></td>
+      <td><input type="button" onclick="delete1()" value="Delete" />
+      
+  </tr>
+  <tr>
+      <tr id = "row2">
+      <td><input type="text" name="sales_R2"/></td>
+      <td><input type="text" name="R2_Phone#"/></td>
+      <td><input type="text" name="R2_region"/></td>
+      <td><input type="text" name="R2_username"/></td>
+      <td><input type="text" name="R2_password"/></td>
+      <td><input type="button" onclick="delete2()" value="Delete" />
+     
+  </tr>
+    <tr>
+      <tr id = "row3">
+      <td><input type="text" name="sales_R3"/></td>
+      <td><input type="text" name="R3_Phone#"/></td>
+      <td><input type="text" name="R3_region"/></td>
+      <td><input type="text" name="R3_username"/></td>
+      <td><input type="text" name="R3_password"/></td>
+      <td><input type="button" onclick="delete3()" value="Delete" />
+    
+  </tr>
+    <tr>
+      <tr id = "row4">
+      <td><input type="text" name="sales_R4"/></td>
+      <td><input type="text" name="R4_Phone#"/></td>
+      <td><input type="text" name="R4_region"/></td>
+      <td><input type="text" name="R4_username"/></td>
+      <td><input type="text" name="R4_password"/></td>
+      <td><input type="button" onclick="delete4()" value="Delete" />
+    
+  </tr>
+    <tr>
+      <tr id = "row5">
+      <td><input type="text" name="sales_R5"/></td>
+      <td><input type="text" name="R5_Phone#"/></td>
+      <td><input type="text" name="R5_region"/></td>
+      <td><input type="text" name="R5_username"/></td>
+      <td><input type="text" name="R5_password"/></td>
+      <td><input type="button" onclick="delete5()" value="Delete" />
+    
+  </tr>
+    <tr>
+      <tr id = "row6">
+      <td><input type="text" name="sales_R6"/></td>
+      <td><input type="text" name="R6_Phone#"/></td>
+      <td><input type="text" name="R6_region"/></td>
+      <td><input type="text" name="R6_username"/></td>
+      <td><input type="text" name="R6_password"/></td>
+      <td><input type="button" onclick="delete6()" value="Delete" />
+
+  </tr>
+
+</table>
+<script>
+function delete1() {
+  document.getElementById("row1").remove();
+}
+function delete2() {
+  document.getElementById("row2").remove();
+}
+function delete3() {
+  document.getElementById("row3").remove();
+}
+function delete4() {
+  document.getElementById("row4").remove();
+}
+function delete5() {
+  document.getElementById("row5").remove();
+}
+function delete6() {
+  document.getElementById("row6").remove();
+}
+  
+</script>
+
+<p>=============================================================</p>
+<h1>Commision Rules</h1>
+<table>
+  <tr>
+      <th>Education</th>
+      <th>Corporation</th>
+      <th>Fixed Commision</th>
+  </tr>
+  <tr>
+      <td><input type="text" name="Edu_Commision"/></td>
+      <td><input type="text" name="Corporate_Commision"/></td>
+      <td><input type="text" name="fixed_commision"/></td>
+
+</table>
+<br>
+<h1>Each Sales Rep's Total sales and Commision</h1>
+
+<table>
+  <tr>
+      <th>Sales Rep</th>
+      <th>Total Sales</th>
+      <th>Total Commision</th>
+  </tr>
+  <tr>
+      <td><input type="text" name="sales_R1"/></td>
+      <td>$<input type="text" name="R1_total_Sales"/></td>
+      <td>$<input type="text" name="R1_total_Commision"/></td>
+  </tr>
+  <tr>
+      <td><input type="text" name="sales_R2"/></td>
+      <td>$<input type="text" name="R2_total_Sales"</td>
+      <td>$<input type="text" name="R2_total_Commision"</td>
+  </tr>
+  <tr>
+      <td><input type="text" name="sales_R3"/></td>
+      <td>$<input type="text" name="R3_total_Sales"</td>
+      <td>$<input type="text" name="R3_total_Commision"</td>
+  </tr>
+  <tr>
+      <td><input type="text" name="sales_R4"/></td>
+      <td>$<input type="text" name="R4_total_Sales"</td>
+      <td>$<input type="text" name="R4_total_Commision"</td>
+  </tr>
+  <tr>
+      <td><input type="text" name="sales_R5"/></td>
+      <td>$<input type="text" name="R5_total_Sales"</td>
+      <td>$<input type="text" name="R5_total_Commision"</td>
+  </tr>
+  <tr>
+      <td><input type="text" name="sales_R6"/></td>
+      <td>$<input type="text" name="R6_total_Sales"</td>
+      <td>$<input type="text" name="R6_total_Commision"</td>
+  </tr>
+  
+</table>
+
+<script>
+
+var R1_total_Sales
+R1_total_Sales = R1_Deal1 + R1_Deal2 + R1_Deal3 + R1_Deal4
+
+var R2_total_Sales
+R2_total_Sales = R2_Deal1 + R2_Deal2 + R2_Deal3 + R2_Deal4
+
+var R3_total_Sales
+R3_total_Sales = R3_Deal1 + R3_Deal2 + R3_Deal3 + R3_Deal4
+
+var R4_total_Sales
+R4_total_Sales = R4_Deal1 + R4_Deal2 + R4_Deal3 + R4_Deal4
+
+var R5_total_Sales
+R5_total_Sales = R5_Deal1 + R5_Deal2 + R5_Deal3 + R5_Deal4
+
+var R6_total_Sales
+R6_total_Sales = R6_Deal1 + R6_Deal2 + R6_Deal3 + R6_Deal4
+
+var R1TC
+R1TC = R1_total_Sales * Commision_Percentage
+
+var total_sales
+total_sales = R1_total_Sales + R2_total_Sales + R3_total_Sales + R4_total_Sales + R5_total_Sales + R6_total_Sales
+
+var total_commsion = R1TC + R2TC + R3TC + R4TC + R5TC + R6TC
+</script>
+<p>=========================================================================================</p>
+
+<h1>Total Sales/Commision</h1>
+
+<table>
+  <tr>
+      <th>Total Sales</th>
+      <th>Total Commision</th>
+  </tr>
+<tr>
+      <td><input type="text" name="total_sales"/></td>
+      <td><input type="text" name="total_commision"/></td>
+  </tr>
+
+
+</table>
+<br>
+
+
+
+</body>
+
+</html>
