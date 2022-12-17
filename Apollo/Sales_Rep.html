@@ -1,0 +1,149 @@
+
+<style>
+    /* Bordered form */
+  form {
+    border: 3px solid #f1f1f1;
+  }
+  
+  /* Full-width inputs */
+    .container {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px transparent #ccc;
+    box-sizing: border-box;
+  }
+  
+  /* Our button matches the grammarly colour :)*/
+  button {
+    background-color: #15c39a;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  /* Add a hover effect for buttons */
+  button:hover {
+    opacity: 0.8;
+  }
+  
+  /* Extra style for the cancel button (red) */
+  .cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+  }
+  
+  /* Center the avatar image inside this container */
+  .imgcontainer {
+    text-align: left;
+    margin: 24px 0 12px 0;
+    width: 250
+  }
+  
+  /* Avatar image */
+  img.avatar {
+    width: 40%;
+    border-radius: 50%;
+  }
+  
+  /* Add padding to containers */
+  .container {
+    padding: 16px;
+  }
+  
+  /* The "Forgot password" text */
+  span.psw {
+    float: right;
+    padding-top: 16px;
+  }
+  
+  /* Change styles for span and cancel button on extra small screens */
+  @media screen and (max-width: 300px) {
+    span.psw {
+      display: block;
+      float: none;
+    }
+    .cancelbtn {
+      width: 100%;
+    }
+  }
+  </style>
+  
+  <!DOCTYPE html>
+  <html>
+  <body>
+    <input type="button" value="Generate Table" onclick="GenerateTable()" />
+    <hr />
+    <div id="dvTable"></div>
+
+    <form action="action_page.php" method="post" name="login_form">
+      <div class="imgcontainer">
+        <img src="grammarly.webp" alt="Avatar" class="avatar">
+      </div>
+    
+      <div class="container">
+        <label for="Hello"><b>Hello</b></label>
+        <label name="repname" placeholder = "default"></label>
+    
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" required>
+    
+        <button type="submit">Login</button>
+  
+      </div>
+    
+      <div class="container" style="background-color:#f1f1f1">
+        <button type="button" class="cancelbtn">Cancel</button>
+        <span class="psw">Forgot <a href="#">password?</a></span>
+      </div>
+    
+    </form>
+  
+    <label id = "hello"><b>uname</b></label>  
+    <script type="text/javascript">
+        function GenerateTable() {
+            //Build an array containing Customer records.
+            var salesdeals = new Array();
+            salesdeals.push(["ID", "Business Name", "Contact 1 Name", "Contact 1 Phone", "Contact 2 Name", "Contact 2 Phone", "Deal Type", "Forcasted Deal Size ($)", "Number of Users", "Start Date", "Expected Close Date", "Stage", "Notes", "Edit", "Delete"]);
+            salesdeals.push([1, "John Hammond", "United States"]);
+            salesdeals.push([2, "Mudassar Khan", "India"]);
+            salesdeals.push([3, "Suzanne Mathews", "France"]);
+            salesdeals.push([4, "Robert Schidner", "Russia"]);
+    
+            //Create a HTML Table element.
+            var table = document.createElement("TABLE");
+            table.border = "1";
+    
+            //Get the count of columns.
+            var columnCount = salesdeals[0].length;
+    
+            //Add the header row.
+            var row = table.insertRow(-1);
+            for (var i = 0; i < columnCount; i++) {
+                var headerCell = document.createElement("TH");
+                headerCell.innerHTML = salesdeals[0][i];
+                row.appendChild(headerCell);
+            }
+    
+            //Add the data rows.
+            for (var i = 1; i < salesdeals.length; i++) {
+                row = table.insertRow(-1);
+                for (var j = 0; j < columnCount; j++) {
+                    var cell = row.insertCell(-1);
+                    cell.innerHTML = salesdeals[i][j];
+                }
+            }
+    
+            var dvTable = document.getElementById("dvTable");
+            dvTable.innerHTML = "";
+            dvTable.appendChild(table);
+        }
+    </script>
+  </body>
+  
+  </html>

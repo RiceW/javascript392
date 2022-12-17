@@ -1,5 +1,7 @@
 // JavaScript File for Storing all the Objects
 // ID is used as the username, bd is birthday, pw is password, tc is total commision, ts is total sales
+RepList = []
+
 function SalesP (ID ,fname, lname, bd, phone, region, pw, tc, ts) {
 	this.ID = ID
     this.fname = fname,
@@ -9,10 +11,16 @@ function SalesP (ID ,fname, lname, bd, phone, region, pw, tc, ts) {
     this.region = region,
     this.pw = pw,
     this.tc = tc,
-    this.ts = ts,
+    this.ts = ts;
 }
 
-S000001
+function dis_rep(){
+    RepList.push(new SalesP("SR00001", "Jeff", "Zhang", 2000/09/23, 343-333-6128, "Ottawa", "HelloTest123", 10000,10000));
+    document.getElementById("hello").innerHTML = RepList[0].value;
+return false
+}
+
+
 
 
 function SalesM (ID ,fname, lname, bd, pw) {
@@ -22,7 +30,8 @@ function SalesM (ID ,fname, lname, bd, pw) {
     this.bd = bd
     this.pw = pw
 }
-ADMIN
+
+ADMIN001
 ADMIN
 
 // bname is business name, c1n is contact one name, c1p is contact one phone, dsizem is monetary deal size, dsizeu is deal size in numebr of users,

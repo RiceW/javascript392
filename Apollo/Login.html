@@ -73,7 +73,11 @@ span.psw {
 }
 </style>
 
-  <form action="action_page.php" method="post" name="login_form">
+<!DOCTYPE html>
+<html>
+<body>
+  <script type="text/javascript", src="testcode.js"></script>
+  <form  method="post" id="login_form">
     <div class="imgcontainer">
       <img src="grammarly.webp" alt="Avatar" class="avatar">
     </div>
@@ -84,19 +88,21 @@ span.psw {
   
       <label for="psw"><b>Password</b></label>
       <input type="password" placeholder="Enter Password" name="psw" required>
-  
-      <button type="submit">Login</button>
-
+    
+      <button type="submit", id="submit" onclick="submit_button()",>Login</button>
+    </form>
     </div>
   
     <div class="container" style="background-color:#f1f1f1">
       <button type="button" class="cancelbtn">Cancel</button>
-      <span class="psw">Forgot <a href="#">password?</a></span>
+      <span class="psw">Forgot <a href="Change_Password.html">password?</a></span>
     </div>
   
-  </form>
   
-<script>
+  <button type="button", class="cancelbtn">Cancel</button>
+  <b id = "hello">testtest</b>  
+  
+  
+</body>
 
-firstLastName()
-</script>
+</html>
