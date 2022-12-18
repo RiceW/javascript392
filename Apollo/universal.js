@@ -1,6 +1,6 @@
-RepList = []
-ManList = []
-DealsList = []
+var RepList = []
+var ManList = []
+var DealsList = []
 function SalesP (ID ,fname, lname, bd, phone, region, pw, tc=null, ts=null) {
 	this.ID = ID
     this.fname = fname,
@@ -71,26 +71,27 @@ function dateDiffInDays(a, b) {
 ManList.push(new SalesM('ADMIN001',"Shaun","Cahill",new Date("2000-05-22"), "ADMIN"))
 
 // Pre-loaded SalesReps
-RepList.push(new SalesP("SR00001", "Apollo", "Lin", new Date("2000-09-23"), 1234567890, "Ottawa", "sample", 10000,10000));
-RepList.push(new SalesP("SR00002", "Emily", "Chen", new Date("2000-06-25"), 2323454566, "Toronto", "HelloTest123", 10000,10000));
+RepList.push(new SalesP("SR00001", "Apollo", "Lin", new Date("2000-09-23"), 1234567890, "Ottawa", "sample",100,1000));
+RepList.push(new SalesP("SR00002", "Emily", "Chen", new Date("2000-06-25"), 2323454566, "Toronto", "HelloTest123", 1000,25000));
 
 var today = new Date();
 var tomorrow = new Date("2022-1-18");
 // Pre-loaded Deals
-DealsList.push(new Deals("000001", "SR00001", "Queen's University", "John Doe", 3439990000,"","",dealtype.a,50,2500,today,today.setDate(today.getDate() + 30), dealstage.a,"this is a sample"));
-// // write things into the local storage
-// function s_item(name,item){
-//     localStorage.setItem(name,JSON.stringify(item));
-// }
+DealsList.push(new Deals("000001", "SR00001", "Queen's University", "John Doe", 3439990000,"","",dealtype.a,2500,50,today,today.setDate(today.getDate() + 30), dealstage.a,"this is a sample"));
+DealsList.push(new Deals("000001", "SR00001", "Carelton Universlity", "John Doe", 3439990000,"","",dealtype.a,7000,50,today,today.setDate(today.getDate() + 30), dealstage.b,"this is a sample"));
+// write things into the local storage
+function s_item(name,item){
+    localStorage.setItem(name,JSON.stringify(item));
+}
 
-// // retreive things from the local storage
-// function r_item(name){
-//     JSON.parse(localStorage.getItem("name"));
-// }
+// retreive things from the local storage
+function r_item(name){
+    return JSON.parse(localStorage.getItem(name));
+}
 
-// s_item("RepList", RepList)
-// s_item("RepList", ManList)
+s_item("RepList", RepList)
+s_item("ManList", ManList)
+s_item("DealsList", DealsList)
 
-console.log(dateDiffInDays(tomorrow, today))
 
 
