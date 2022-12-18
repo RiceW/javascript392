@@ -112,12 +112,12 @@ function delete6() {
   <tr>
       <th>Education</th>
       <th>Corporation</th>
-      <th>Fixed Commision</th>
+
   </tr>
   <tr>
       <td><input type="text" name="Edu_Commision"/></td>
       <td><input type="text" name="Corporate_Commision"/></td>
-      <td><input type="text" name="fixed_commision"/></td>
+ 
 
 </table>
 <br>
@@ -126,36 +126,50 @@ function delete6() {
 <table>
   <tr>
       <th>Sales Rep</th>
+      <th>Education Sales</th>
+      <th>Corporation Sales</th>
       <th>Total Sales</th>
       <th>Total Commision</th>
   </tr>
   <tr>
       <td><input type="text" name="sales_R1"/></td>
+      <td><input type="text" name="R1_corporate_sales"/></td>
+      <td><input type="text" name="R1_edu_sales"/></td>
       <td>$<input type="text" name="R1_total_Sales"/></td>
       <td>$<input type="text" name="R1_total_Commision"/></td>
   </tr>
   <tr>
       <td><input type="text" name="sales_R2"/></td>
+      <td><input type="text" name="R2_corporate_sales"/></td>
+      <td><input type="text" name="R2_edu_sales"/></td>
       <td>$<input type="text" name="R2_total_Sales"</td>
       <td>$<input type="text" name="R2_total_Commision"</td>
   </tr>
   <tr>
       <td><input type="text" name="sales_R3"/></td>
+      <td><input type="text" name="R3_corporate_sales"/></td>
+      <td><input type="text" name="R3_edu_sales"/></td>
       <td>$<input type="text" name="R3_total_Sales"</td>
       <td>$<input type="text" name="R3_total_Commision"</td>
   </tr>
   <tr>
       <td><input type="text" name="sales_R4"/></td>
+      <td><input type="text" name="R4_corporate_sales"/></td>
+      <td><input type="text" name="R4_edu_sales"/></td>
       <td>$<input type="text" name="R4_total_Sales"</td>
       <td>$<input type="text" name="R4_total_Commision"</td>
   </tr>
   <tr>
       <td><input type="text" name="sales_R5"/></td>
+      <td><input type="text" name="R5_corporate_sales"/></td>
+      <td><input type="text" name="R5_edu_sales"/></td>
       <td>$<input type="text" name="R5_total_Sales"</td>
       <td>$<input type="text" name="R5_total_Commision"</td>
   </tr>
   <tr>
       <td><input type="text" name="sales_R6"/></td>
+      <td><input type="text" name="R6_corporate_sales"/></td>
+      <td><input type="text" name="R6_edu_sales"/></td>
       <td>$<input type="text" name="R6_total_Sales"</td>
       <td>$<input type="text" name="R6_total_Commision"</td>
   </tr>
@@ -165,25 +179,37 @@ function delete6() {
 <script>
 
 var R1_total_Sales
-R1_total_Sales = R1_Deal1 + R1_Deal2 + R1_Deal3 + R1_Deal4
+R1_total_Sales = R1_edu_sales + R1_corporate_sales
 
 var R2_total_Sales
-R2_total_Sales = R2_Deal1 + R2_Deal2 + R2_Deal3 + R2_Deal4
+R2_total_Sales = R2_edu_sales + R2_corporate_sale
 
 var R3_total_Sales
-R3_total_Sales = R3_Deal1 + R3_Deal2 + R3_Deal3 + R3_Deal4
+R3_total_Sales = R3_edu_sales + R3_corporate_sales
 
 var R4_total_Sales
-R4_total_Sales = R4_Deal1 + R4_Deal2 + R4_Deal3 + R4_Deal4
+R4_total_Sales = R4_edu_sales + R4_corporate_sales
 
 var R5_total_Sales
-R5_total_Sales = R5_Deal1 + R5_Deal2 + R5_Deal3 + R5_Deal4
+R5_total_Sales = R5_edu_sales + R5_corporate_sales
 
 var R6_total_Sales
-R6_total_Sales = R6_Deal1 + R6_Deal2 + R6_Deal3 + R6_Deal4
+R6_total_Sales = R6_edu_sales + R6_corporate_sales
+//hey arya and avery, pls define edu and corporate sales above in the assign deal section
+
 
 var R1TC
-R1TC = R1_total_Sales * Commision_Percentage
+R1TC = R1_Edu_Sales * Edu_Commision + R1_Corporate_Sales * Corporate_Commision
+var R2TC
+R2TC = R2_Edu_Sales * Edu_Commision + R2_Corporate_Sales * Corporate_Commision
+var R3TC
+R3TC = R3_Edu_Sales * Edu_Commision + R3_Corporate_Sales * Corporate_Commision
+var R4TC
+R4TC = R1_Edu_Sales * Edu_Commision + R1_Corporate_Sales * Corporate_Commision
+var R5TC
+R5TC = R5_Edu_Sales * Edu_Commision + R5_Corporate_Sales * Corporate_Commision
+var R6TC
+R6TC = R6_Edu_Sales * Edu_Commision + R6_Corporate_Sales * Corporate_Commision
 
 var total_sales
 total_sales = R1_total_Sales + R2_total_Sales + R3_total_Sales + R4_total_Sales + R5_total_Sales + R6_total_Sales
