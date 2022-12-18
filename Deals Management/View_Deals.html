@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+
+<style>
+  /* Bordered form */
+form {
+  border: 3px solid #f1f1f1;
+}
+
+/* Add padding to containers */
+.container {
+  padding: 16px;
+}
+
+</style>
+<body>
+    <form action="action_page.php" method="post" name="Manager Deals Management">
+
+      <h1 style="color:#15c39a;text-align:center;">Deals Overview</h1>
+
+
+<div class="container">
+<label for="total_sales"><b>Total Sales:</b></label>
+<p id =total_sales> <var>a</var> </p>
+<label for="total_commision"><b>Total Commision:</b></label>  
+<p id =total_commision> <var>b</var> </p>
+
+<form>
+<!--drop down list with name of sales reps to choose from-->
+<label for="rep_select"><b>Choose a rep:</b></label>
+<select name="reps" id="rep_select">
+    <option value="sales_R1">Sales Rep1</option>
+    <option value="sales_R2">Sales Rep2</option>
+    <option value="sales_R3">Sales Rep3</option>
+    <option value="sales_R4">Sales Rep4</option>
+    <option value="sales_R5">Sales Rep5</option>
+    <option value="sales_R6">Sales Rep6</option>    
+</select>
+    
+</form>
+
+<table>
+<!--table with these fields for each deal
+(dealID, repID, bname, c1n, c1p, c2n, c2n, dtype, dsizem, dsizeu, sdate, cdate, stage, notes)
+-->    
+</table>
