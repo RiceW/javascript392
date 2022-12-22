@@ -1,6 +1,16 @@
 // JavaScript File
 
-var RepList = s_read("RepList");
+
+var RepList = s_read("RepList")
+
+console.log(RepList)
+
+if(RepList == null){
+    var RepList = [];
+    const placeholder = {a:"You found me!"};
+    RepList.push(placeholder);
+    s_save("RepList", RepList)
+}
 
 function add_new_object(array,key,object){
     var rID = document.forms["myForm"]["rID"].value;
