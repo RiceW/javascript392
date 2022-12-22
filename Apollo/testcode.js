@@ -1,5 +1,4 @@
 
-//alert(checkLogin(usernameL, passwordL));
 
 function auth_user(username, password, ulist){
 
@@ -11,6 +10,8 @@ function auth_user(username, password, ulist){
     } else {
         return account.pw == password;
     }}
+    
+console.log(RepList)
 
 function redirect(url){
     window.history.pushState("", "", url);
@@ -23,12 +24,14 @@ function submit_button(){
     const passwordL = document.forms["login_form"]["psw"].value;
 
     if(auth_user(usernameL,passwordL,RepList) == true){
-        s_item("username",usernameL)
-        redirect("Sales_Rep.html");
+        s_item("username",usernameL);
+        window.location='Change_Password.html';
+        event.preventDefault();
     } else if (auth_user(usernameL,passwordL,ManList) == true){
-        redirect("Sales_Manager.html");
-        return false;
+        // window.location = "Sales_Rep.html";
+        event.preventDefault();
     } else {
         alert("You have entered an invalid username or password");
+        event.preventDefault();
     }}
 

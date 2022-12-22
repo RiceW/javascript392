@@ -1,0 +1,36 @@
+
+<style>
+    table, th, td {
+  border: 1px solid black;
+}
+</style>
+
+<!DOCTYPE html>
+<html>
+<body>
+    <script type="text/javascript" src="preload.js"></script>
+    <script>
+var person1;
+var storageTemp;
+person1 = {
+    name: "Bob Smith",
+    Company: "Canadian Tire",
+    Phone: "613-555-1234",
+    Age: 67
+};
+
+function save_change(){
+    console.log(DealsList);
+    DealsList.push(new Deals("000001", "SR00001", "Queen's University", "John Doe", 3439990000,"","",dealtype.a,2500,50,today,today.setDate(today.getDate() + 30), dealstage.a,"this is a sample"));
+    s_save("DealsList", DealsList);   
+}
+
+
+</script>
+    <form onsubmit="window.location='localstorage_test.html';return false;">
+        <button type ="button" onclick="store_rep()">save</button>
+        <button type = "submit">test</button>
+    </form>
+
+</body>
+</html>

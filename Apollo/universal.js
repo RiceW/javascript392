@@ -1,6 +1,7 @@
 var RepList = []
 var ManList = []
 var DealsList = []
+
 function SalesP (ID ,fname, lname, bd, phone, region, pw, tc=null, ts=null) {
 	this.ID = ID
     this.fname = fname,
@@ -68,7 +69,7 @@ function dateDiffInDays(a, b) {
   }
       
 // Default Manager
-ManList.push(new SalesM('ADMIN001',"Shaun","Cahill",new Date("2000-05-22"), "ADMIN"))
+ManList.push(new SalesM('ADMIN001',"Shaun","Cahill",new Date("2000-05-22"), "ADMIN"));
 
 // Pre-loaded SalesReps
 RepList.push(new SalesP("SR00001", "Apollo", "Lin", new Date("2000-09-23"), 1234567890, "Ottawa", "sample",100,1000));
@@ -81,12 +82,12 @@ DealsList.push(new Deals("000001", "SR00001", "Queen's University", "John Doe", 
 DealsList.push(new Deals("000001", "SR00001", "Carelton Universlity", "John Doe", 3439990000,"","",dealtype.a,7000,50,today,today.setDate(today.getDate() + 30), dealstage.b,"this is a sample"));
 // write things into the local storage
 function s_item(name,item){
-    localStorage.setItem(name,JSON.stringify(item));
+    window.localStorage.setItem(name,JSON.stringify(item));
 }
 
 // retreive things from the local storage
 function r_item(name){
-    return JSON.parse(localStorage.getItem(name));
+    return JSON.parse(window.localStorage.getItem(name));
 }
 
 s_item("RepList", RepList)

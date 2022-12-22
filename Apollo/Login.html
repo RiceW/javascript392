@@ -78,7 +78,7 @@ span.psw {
 <body>
   <script type="text/javascript", src="universal.js"></script>
   <script type="text/javascript", src="testcode.js"></script>
-  <form  method="post" id="login_form">
+  <form  method="post" id="login_form" onsubmit = "submit_button">
     <div class="imgcontainer">
       <img src="grammarly.webp" alt="Avatar" class="avatar">
     </div>
@@ -89,12 +89,10 @@ span.psw {
   
       <label for="psw"><b>Password</b></label>
       <input type="password" placeholder="Enter Password" name="psw" required>
-    
-      <button type="submit", id="submit" onclick="submit_button()",>Login</button>
+      <button type="submit" id="submit" >Login</button>
     </form>
     </div>
-  
-      <span class="psw">Change <a href="Change_Password.html">password?</a></span>
+    <span class="psw">Change <a href="Change_Password.html">password?</a></span>
   
   
   
