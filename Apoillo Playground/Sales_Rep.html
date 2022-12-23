@@ -1,0 +1,153 @@
+
+<style>
+    table, th, td {
+  border: 1px solid black;
+}
+
+/* Center the avatar image inside this container */
+.imgcontainer {
+  text-align: left;
+  margin: 24px 0 12px 0;
+}
+/* Avatar image */
+img.avatar {
+width: 15%;
+border-radius: 10%;
+}
+
+  /* Add padding to containers */
+.container {
+  padding: 25px;
+  padding-bottom: 50px;
+}
+
+  
+    form  { display: table;      }
+    p     { display: table-row;  }
+    label { display: table-cell; 
+            padding-right: 50px;
+            padding-left: 50px;}
+    input { display: table-cell; }
+  
+  /* Our buttons matches the grammarly colour :)*/
+    button {
+      background-color: #15c39a;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      cursor: pointer;
+      width: 250px;
+    }
+    
+    button:hover {
+      opacity: 0.6;
+    }
+    
+    /* Full-width inputs */
+textarea, select, input {
+  width: 100%;
+  padding: 12px 12px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+select {
+  font-size: 18 ;
+
+}
+label{
+    font-weight: bold;
+}
+
+tbody{
+  overflow:scroll;
+}
+input{
+  width:auto;
+}
+</style>
+
+
+
+<!DOCTYPE html>
+<html>
+<body>
+<script type="text/javascript" src="preload.js"></script>
+<script type="text/javascript" src="Sales_Rep.js"></script>
+
+<div class="imgcontainer">
+  <img src="grammarly.webp" alt="Avatar" class="avatar">
+</div>
+<h1> Welcome Back </h1>
+
+<div class="container">
+<form id="myForm" onSubmit = "add_new_object(DealsList, 'DealsList', Deals)">
+  <p><label>Deal ID:</label><input type="text" name="dealID" required></input>
+  <label>Rep ID:</label><input type="text" name="rID" required></input>
+  </p><p><label>Business Name:</label> <input type="text" name="bname" required></input>
+  </p><p><label>Contact 1 Name:</label> <input type="text" name="c1n" required></input>
+  <label>Contact 1 Phone Number:</label> <input type="number" name="c1p" required></input>
+  </p><p><label>Contact 2 Name:</label> <input type="text" name="c2n" value = "none"></input>
+  <label>Contact 2 Phone Number:</label> <input type="number" name="c2p" value = 0></input>
+  </p><p><label>Deal Type</label> <select name="dtype" size = "2" single required>
+      <option value = "Educational">Educational</option>
+      <option value = "Corporate">Corporate</option></select>
+  </p><p><label>Forcaseted Deal Size ($)</label> <input type="number" name="dsizem" required></input>
+  <label>Number of Users</label> <input type="number" name="dsizeu" required></input>
+  </p><p><label>Deal Start Date</label> <input type="date" name="sdate" required></input>
+  <label>Expected Closed Date</label> <input type="date" name="cdate" required></input>
+  </p><p><label>Deal Stage</label> <select name="stage" size = "7" single required>
+      <option value = "Awareness">Awareness</option>
+      <option value = "Interest">Interest</option>
+      <option value = "Consideration">Consideration</option>
+      <option value = "Intent">Intent</option>
+      <option value = "Evaluation">Evaluation</option>
+      <option value = "Purchase">Purchase</option>
+      <option value = "Closed">Closed</option></select>
+  <label>Deal Note</label> <textarea name="notes" rows ="10" cols="30"></textarea>
+  </p><p>
+  <br>
+  <button type="submit">Add This Deal</button>
+</form>
+</div>
+<br>
+
+
+<table id ="myrealtable">
+    <thead>
+    <th>Deal ID</th>
+    <th>Rep ID</th>
+    <th>Business Name</th>
+    <th>Contact 1 Name</th>
+    <th>Contact 1 Phone</th>
+    <th>Contact 2 Name</th>
+    <th>Contact 2 Phone</th>
+    <th>Deal Type</th>
+    <th>Forcaseted Deal Size ($)</th>
+    <th>Number of Users</th>
+    <th>Start Date</th>
+    <th>End Date</th>
+    <th>Deal Stage</th>
+    <th>Deal Note</th>
+    
+    </thead>
+    <div style="overflow-x:auto;">
+    <tbody id="mytable">
+        
+    </tbody>
+    </div>
+</table>
+
+
+<button type="button" onclick ="cal_sales('SR00001')">display total sales</button>
+<script>
+  build_table('mytable', DealsList, 'Deal');
+  
+</script>
+<button type="button" onclick ="con_table('myrealtable', 'DealsList', 'Deal')">update table</button>
+<button type="button" onclick ="window.localStorage.clear();">clear storage</button>
+    </body>
+</html>

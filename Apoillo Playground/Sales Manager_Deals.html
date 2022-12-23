@@ -16,7 +16,7 @@ border-radius: 10%;
 
   /* Add padding to containers */
 .container {
-  padding: 25px;
+  padding-left: 25px;
   padding-bottom: 200px;
 }
 
@@ -71,16 +71,17 @@ label{
 <h1> Welcome Back to the Admin Portal</h1>
 
 <div class="container">
-    <h2>Please set a commision formula</h2><table>
-    <form id="commission">
-        <p><label>Fixed Pay</label><input type ="number" required></input>
-        </p><p><label>Commision Percentage %</label><input type ="number" required></input>
-        </p>
+  <h2>Please set a commision formula</h2><table>
+  <form id="commission">
+      <p><label>Fixed Pay</label><input type ="number" required></input>
+      </p><p><label>Commision Percentage %</label><input type ="number" required></input>
+      </p>
     </form>
 </div>
 
 <div class="container">
 <form id="myForm" onSubmit = "add_new_object(RepList, 'RepList', SalesP)">
+  <h2>Add a New Rep</h2>
   <p><label>RepID:</label><input type="text" name="rID" required></input>
   </p><p><label>First name:</label> <input type="text" name="fname" required></input>
   </p><p><label>Last name:</label> <input type="text" name="lname" required></input>

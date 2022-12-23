@@ -1,9 +1,6 @@
 // JavaScript File
 
-
 var RepList = s_read("RepList")
-
-console.log(RepList)
 
 if(RepList == null){
     var RepList = [];
@@ -12,6 +9,11 @@ if(RepList == null){
     s_save("RepList", RepList)
 }
 
+function store_com(){
+    var variable = document.forms["commission"]["rID"].value;
+    var fixed = document.forms["commission"]["fname"].value;
+    
+}
 function add_new_object(array,key,object){
     var rID = document.forms["myForm"]["rID"].value;
     var fname = document.forms["myForm"]["fname"].value;

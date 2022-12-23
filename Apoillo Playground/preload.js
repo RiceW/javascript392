@@ -2,6 +2,7 @@ var RepList = []
 var ManList = []
 var DealsList = []
 
+// constructor for Sales Rep
 function SalesP (ID ,fname, lname, bd, phone, region, pw, tc=0, ts=0) {
 	this.ID = ID
     this.fname = fname,
@@ -13,6 +14,8 @@ function SalesP (ID ,fname, lname, bd, phone, region, pw, tc=0, ts=0) {
     this.tc = tc,
     this.ts = ts;
 }
+
+// constructor for Sales Manager
 function SalesM (ID ,fname, lname, bd, pw) {
 	this.ID = ID
     this.fname = fname,
@@ -21,9 +24,10 @@ function SalesM (ID ,fname, lname, bd, pw) {
     this.pw = pw
 }
 
+// Constructor for Deals
 // bname is business name, c1n is contact one name, c1p is contact one phone, dsizem is monetary deal size, dsizeu is deal size in numebr of users,
 // sdate is start date, c date is close date, stage is which stage the deal is in, notes is any additional notes or deal closed reason
-function Deals (dealID, repID, bname, c1n, c1p, c2n=null, c2p=null, dtype, dsizem, dsizeu, sdate, cdate, stage, notes=null) {
+function Deals (dealID, repID, bname, c1n, c1p, c2n, c2p, dtype, dsizem, dsizeu, sdate, cdate, stage, notes) {
 	this.dealID = dealID
     this.repID = repID
     this.bname = bname,
@@ -83,15 +87,20 @@ function build_table(tableid, array, type){
     console.log(array);
     var row_count = 1;
     if(array.length == 1){
-        alert("<p>There is no data yet!</p>");
-    }
+            alert("<p>There is no data yet!</p>");
+        }   
     else {
-        while (row_count < array.length){
-                document.getElementById(tableid).innerHTML += "<tr><td><input type ='text' value=" + i_p(array,row_count,0) + " " + "</input>"+ "</td><td>" + "<input type ='text' value=" + i_p(array,row_count,1) + " " + "</input>" +  "</td><td>" + "<input type ='text' value=" + i_p(array,row_count,2) + " " + "</input>" + "</td><td>" + "<input type ='date' value=" + i_p(array,row_count,3) + " " + "</input>"+ "</td><td>" + "<input type ='number' value=" + i_p(array,row_count,4) + " " + "</input>"+ "</td><td>" + "<input type ='text' value=" + i_p(array,row_count,5) + " " + "</input>"+ "</td><td>" + "<input type ='text' value=" + i_p(array,row_count,6) + " " + "</input>"+ "</td><td>" + "<input type ='number' value=" + i_p(array,row_count,7) + " " + "</input>"+ "</td><td>" + "<input type ='number' value=" + i_p(array,row_count,8) + " " + "</input>"+"</td></tr>";
-            row_count +=1
-        }
-    }
-}
+        if (type === "Rep"){
+            while (row_count < array.length){
+                    document.getElementById(tableid).innerHTML += "<tr><td><input type ='text' value=" + i_p(array,row_count,0) + " " + "</input>"+ "</td><td>" + "<input type ='text' value=" + i_p(array,row_count,1) + " " + "</input>" +  "</td><td>" + "<input type ='text' value=" + i_p(array,row_count,2) + " " + "</input>" + "</td><td>" + "<input type ='date' value=" + i_p(array,row_count,3) + " " + "</input>"+ "</td><td>" + "<input type ='number' value=" + i_p(array,row_count,4) + " " + "</input>"+ "</td><td>" + "<input type ='text' value=" + i_p(array,row_count,5) + " " + "</input>"+ "</td><td>" + "<input type ='text' value=" + i_p(array,row_count,6) + " " + "</input>"+ "</td><td>" + "<input type ='number' value=" + i_p(array,row_count,7) + " " + "</input>"+ "</td><td>" + "<input type ='number' value=" + i_p(array,row_count,8) + " " + "</input>"+"</td></tr>";
+                row_count +=1
+            }}
+        else if(type ==="Deal"){
+            while (row_count < array.length){
+                    document.getElementById(tableid).innerHTML += "<tr><td><input type ='text' value=" + i_p(array,row_count,0) + " " + "</input>"+ "</td><td>" + "<input type ='text' value=" + i_p(array,row_count,1) + " " + "</input>" +  "</td><td>" + "<input type ='text' value=" + i_p(array,row_count,2) + " " + "</input>" + "</td><td>" + "<input type ='text' value=" + i_p(array,row_count,3) + " " + "</input>"+ "</td><td>" + "<input type ='number' value=" + i_p(array,row_count,4) + " " + "</input>" +  "</td><td>" + "<input type ='text' value=" + i_p(array,row_count,5) + " " + "</input>" + "</td><td>" + "<input type ='number' value=" + i_p(array,row_count,6) + " " + "</input>"+ "</td><td>" + "<input type ='text' value=" + i_p(array,row_count,7) + " " + "</input>"+ "</td><td>" + "<input type ='number' value=" + i_p(array,row_count,8) + " " + "</input>"+ "</td><td>" + "<input type ='number' value=" + i_p(array,row_count,9) + " " + "</input>"+ "</td><td>" + "<input type ='date' value=" + i_p(array,row_count,10) + " " + "</input>"+ "</td><td>" + "<input type ='date' value=" + i_p(array,row_count,11) + " " + "</input>" +"</td><td>" + "<input type ='text' value=" + i_p(array,row_count,12) + " " + "</input>"+"</td><td>" + "<input type ='text' value=" + i_p(array,row_count,13) + " " + "</input>"+"</td></tr>";
+                row_count +=1
+                }}       
+    }}
 
 // converted edited table and store into local storage
 // type will determine which constructor to call
@@ -111,7 +120,7 @@ function con_table(tableid, key, type){
         }
     } else if (type === "Deal"){
         while(row_count <= totalRowCount){
-            newarray.push(new Deals(f_c_i(table,row_count,0),f_c_i(table,row_count,1),f_c_i(table,row_count,2),f_c_i(table,row_count,3),f_c_i(table,row_count,4),f_c_i(table,row_count,5),f_c_i(table,row_count,6),f_c_i(table,row_count,7),f_c_i(table,row_count,8)));
+            newarray.push(new Deals(f_c_i(table,row_count,0),f_c_i(table,row_count,1),f_c_i(table,row_count,2),f_c_i(table,row_count,3),f_c_i(table,row_count,4),f_c_i(table,row_count,5),f_c_i(table,row_count,6),f_c_i(table,row_count,7),f_c_i(table,row_count,8),f_c_i(table,row_count,9),f_c_i(table,row_count,10),f_c_i(table,row_count,11),f_c_i(table,row_count,12),f_c_i(table,row_count,13)));
             row_count += 1;
             s_save(key, newarray);
             window.location.reload();
@@ -119,4 +128,21 @@ function con_table(tableid, key, type){
     } else {
         console.log("Incorrect type")
     }
+}
+
+//calculate total sales based on repID
+function cal_sales(repID){
+    var sales_array= []
+    sales_array = DealsList.filter(deal => deal.repID == repID);
+// https://stackoverflow.com/questions/23247859/better-way-to-sum-a-property-value-in-an-array
+// parsing through array to retrieve sum of a property, modified to work with our array and object types
+    console.log(sales_array.reduce((n, {dsizem}) => n + Number(dsizem), 0))
+
+}
+    
+// calculate total commission based on repID and commision formula
+function cal_com(fixed, variable, sales){
+    var sales = fixed + variable/100 * sales;
+    return sales;
+    
 }
