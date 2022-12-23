@@ -82,6 +82,10 @@ function f_c_i(table, r_num, c_num){
     return table.rows[r_num].cells[c_num].firstChild.value;
 }
 
+// function del_row(tableid, row){
+//     document.getElementById(tableid).deleteRow(row);
+// }
+
 // table id is in string format, array is the list of objects, p_num is number of properties
 function build_table(tableid, array, type){
     console.log(array);
@@ -97,7 +101,7 @@ function build_table(tableid, array, type){
             }}
         else if(type ==="Deal"){
             while (row_count < array.length){
-                    document.getElementById(tableid).innerHTML += "<tr><td><input type ='text' value=" + i_p(array,row_count,0) + " " + "</input>"+ "</td><td>" + "<input type ='text' value=" + i_p(array,row_count,1) + " " + "</input>" +  "</td><td>" + "<input type ='text' value=" + i_p(array,row_count,2) + " " + "</input>" + "</td><td>" + "<input type ='text' value=" + i_p(array,row_count,3) + " " + "</input>"+ "</td><td>" + "<input type ='number' value=" + i_p(array,row_count,4) + " " + "</input>" +  "</td><td>" + "<input type ='text' value=" + i_p(array,row_count,5) + " " + "</input>" + "</td><td>" + "<input type ='number' value=" + i_p(array,row_count,6) + " " + "</input>"+ "</td><td>" + "<input type ='text' value=" + i_p(array,row_count,7) + " " + "</input>"+ "</td><td>" + "<input type ='number' value=" + i_p(array,row_count,8) + " " + "</input>"+ "</td><td>" + "<input type ='number' value=" + i_p(array,row_count,9) + " " + "</input>"+ "</td><td>" + "<input type ='date' value=" + i_p(array,row_count,10) + " " + "</input>"+ "</td><td>" + "<input type ='date' value=" + i_p(array,row_count,11) + " " + "</input>" +"</td><td>" + "<input type ='text' value=" + i_p(array,row_count,12) + " " + "</input>"+"</td><td>" + "<input type ='text' value=" + i_p(array,row_count,13) + " " + "</input>"+"</td></tr>";
+                    document.getElementById(tableid).innerHTML += "<tr><td><input type ='text' value=" + i_p(array,row_count,0) + " " + "</input>"+ "</td><td>" + "<input type ='text' value=" + i_p(array,row_count,1) + ">" + "</input>" +  "</td><td>" + "<input type ='text' value=" + i_p(array,row_count,2) + " " + "</input>" + "</td><td>" + "<input type ='text' value=" + i_p(array,row_count,3) + " " + "</input>"+ "</td><td>" + "<input type ='number' value=" + i_p(array,row_count,4) + " " + "</input>" +  "</td><td>" + "<input type ='text' value=" + i_p(array,row_count,5) + " " + "</input>" + "</td><td>" + "<input type ='number' value=" + i_p(array,row_count,6) + " " + "</input>"+ "</td><td>" + "<input type ='text' value=" + i_p(array,row_count,7) + " " + "</input>"+ "</td><td>" + "<input type ='number' value=" + i_p(array,row_count,8) + " " + "</input>"+ "</td><td>" + "<input type ='number' value=" + i_p(array,row_count,9) + " " + "</input>"+ "</td><td>" + "<input type ='date' value=" + i_p(array,row_count,10) + " " + "</input>"+ "</td><td>" + "<input type ='date' value=" + i_p(array,row_count,11) + " " + "</input>" +"</td><td>" + "<input type ='text' value=" + i_p(array,row_count,12) + " " + "</input>"+"</td><td>" + "<input type ='text' value=" + i_p(array,row_count,13) + " " + "</input>"+"</td></tr>";
                 row_count +=1
                 }}       
     }}
@@ -133,16 +137,36 @@ function con_table(tableid, key, type){
 //calculate total sales based on repID
 function cal_sales(repID){
     var sales_array= []
+    if(DealsList == null){}
+    else{
     sales_array = DealsList.filter(deal => deal.repID == repID);
 // https://stackoverflow.com/questions/23247859/better-way-to-sum-a-property-value-in-an-array
 // parsing through array to retrieve sum of a property, modified to work with our array and object types
-    console.log(sales_array.reduce((n, {dsizem}) => n + Number(dsizem), 0))
+    var holder = Number(sales_array.reduce((n, {dsizem}) => n + Number(dsizem), 0));
+    if (holder == null || undefined){holder = 0}
+    else {
+        return holder;
+    }
 
-}
+}}
     
-// calculate total commission based on repID and commision formula
+// calculate total commission based on sales and commission formula
 function cal_com(fixed, variable, sales){
-    var sales = fixed + variable/100 * sales;
-    return sales;
-    
+    var com = Number(fixed) + Number(variable) * Number(sales);
+    return com;
 }
+
+// auto calculate sales and commission and store to backend so it is synced across all pages
+function sales_com(){
+
+    RepList.forEach(rep =>{
+        if (rep["ID"] === undefined){}
+        else{
+        var commission = s_read("commission");
+        rep["ts"] = cal_sales(rep["ID"])
+        rep["tc"] = cal_com(commission[0],commission[1], cal_sales(rep["ID"]))
+        }
+    })
+    s_save("RepList", RepList);
+}
+

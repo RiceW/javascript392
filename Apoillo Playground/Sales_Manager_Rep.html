@@ -1,60 +1,63 @@
 
 <style>
-    table, th, td {
-  border: 1px solid black;
-}
-/* Center the avatar image inside this container */
-.imgcontainer {
-  text-align: left;
-  margin: 24px 0 12px 0;
-}
-/* Avatar image */
-img.avatar {
-width: 15%;
-border-radius: 10%;
-}
-
-  /* Add padding to containers */
-.container {
-  padding: 25px;
-  padding-bottom: 200px;
-}
-
+  table {
+    table-layout: auto;
+    border: 1px solid black;
+    width: 100%;
+  }
+  /* Center the avatar image inside this container */
+  .imgcontainer {
+    text-align: left;
+    margin: 24px 0 12px 0;
+  }
+  /* Avatar image */
+  img.avatar {
+  width: 15%;
+  border-radius: 10%;
+  }
   
-    form  { display: table;      }
-    p     { display: table-row;  }
-    label { display: table-cell; 
-            padding-right: 50px; }
-    input { display: table-cell; }
-  
-  /* Our buttons matches the grammarly colour :)*/
-    button {
-      background-color: #15c39a;
-      color: white;
-      padding: 14px 20px;
-      margin: 8px 0;
-      border: none;
-      cursor: pointer;
-      width: 250px;
-    }
-    
-    button:hover {
-      opacity: 0.6;
-    }
-    
-    /* Full-width inputs */
-input {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
+    /* Add padding to containers */
+  .container {
+    padding: 25px;
+    padding-bottom: 200px;
+  }
 
-label{
-    font-weight: bold;
-}
+
+  form  { display: table;      }
+  p     { display: table-row;  }
+  label { display: table-cell; 
+          padding-right: 50px; }
+  input { display: table-cell; }
+
+/* Our buttons matches the grammarly colour :)*/
+  button {
+    background-color: #15c39a;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 250px;
+  }
+  
+  button:hover {
+    opacity: 0.6;
+  }
+  
+  /* Full-width inputs */
+  input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  
+  label{
+      font-weight: bold;
+  }
+ 
 </style>
 
 
@@ -69,13 +72,17 @@ label{
   <img src="grammarly.webp" alt="Avatar" class="avatar">
 </div>
 <h1> Welcome Back to Rep Management</h1>
-
+<br>
+<button style = "margin:0 auto; display:block; width:100%;" type="button" onclick = "window.location='Sales_Manager_Deals.html';return false;">Go to Deals View</button>
+<br>
 <div class="container">
     <h2>Please set a commision formula</h2><table>
-    <form id="commission">
+    <h4 style="color:orange;">! You cannot proceed without adding a formula !</h4>
+    <form id="commission" onsubmit="store_com()">
         <p><label>Fixed Pay</label><input type ="number" required name = "fixed"></input>
         </p><p><label>Commision Percentage %</label><input type ="number" required name = "variable"></input>
         </p>
+        <p id= "formula" style="font-weight:bold;color:#15c39a;"></p>
         <button type = "submit">Store Formula</button>
     </form>
 </div>
@@ -97,9 +104,6 @@ label{
 <br>
 <br>
 
-
-<button type="button" onclick = "window.location='localstorage_test.html';return false;">click this</button>
-
 <table id ="myrealtable">
     <thead>
     <th>Rep ID</th>
@@ -117,11 +121,21 @@ label{
         
     </tbody>
 </table>
-<button type="button" onclick ="build_table('mytable', RepList, 'Rep')">build table</button>
+<button type="button" onclick ="sales_com()">sales and commission</button>
 <script>
   build_table('mytable', RepList, 'Rep');
+  sales_com()
 </script>
 <button type="button" onclick ="con_table('myrealtable', 'RepList', 'Rep')">update table</button>
 <button type="button" onclick ="window.localStorage.clear();">clear storage</button>
+
+<br>
+
+
+
+<br>
+<button style = "margin:0 auto; display:block; width:100%; background-color:orange;" type="button" onclick = "window.location='localstorage_test.html';return false;">Log Out</button>
+
+</form>
     </body>
 </html>
