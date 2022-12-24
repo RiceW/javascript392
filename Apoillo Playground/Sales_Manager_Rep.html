@@ -1,7 +1,6 @@
 
 <style>
   table {
-    table-layout: auto;
     border: 1px solid black;
     width: 100%;
   }
@@ -18,8 +17,8 @@
   
     /* Add padding to containers */
   .container {
-    padding: 25px;
-    padding-bottom: 200px;
+    padding-left: 50px;
+    padding-bottom: 50px;
   }
 
 
@@ -34,10 +33,11 @@
     background-color: #15c39a;
     color: white;
     padding: 14px 20px;
-    margin: 8px 0;
+    margin: 10 0;
     border: none;
     cursor: pointer;
     width: 250px;
+    font-weight:bold;
   }
   
   button:hover {
@@ -57,7 +57,7 @@
   label{
       font-weight: bold;
   }
- 
+ h1{padding-left: 50px;}
 </style>
 
 
@@ -73,10 +73,10 @@
 </div>
 <h1> Welcome Back to Rep Management</h1>
 <br>
-<button style = "margin:0 auto; display:block; width:100%;" type="button" onclick = "window.location='Sales_Manager_Deals.html';return false;">Go to Deals View</button>
+<button style = "margin: 0 50px 0; display:block; width:25%; " type="button" onclick = "window.location='Sales_Manager_Deals.html';return false;">Go to Deals View</button>
 <br>
 <div class="container">
-    <h2>Please set a commision formula</h2><table>
+    <h2>Please set a commision formula</h2>
     <h4 style="color:orange;">! You cannot proceed without adding a formula !</h4>
     <form id="commission" onsubmit="store_com()">
         <p><label>Fixed Pay</label><input type ="number" required name = "fixed"></input>
@@ -89,6 +89,7 @@
 
 <div class="container">
 <form id="myForm" onSubmit = "add_new_object(RepList, 'RepList', SalesP)">
+  <h2>Add a New Sales Rep</h2>
   <p><label>RepID:</label><input type="text" name="rID" required></input>
   </p><p><label>First Name:</label> <input type="text" name="fname" required></input>
   </p><p><label>Last Name:</label> <input type="text" name="lname" required></input>
@@ -101,10 +102,10 @@
   <button type="submit">Add This Rep</button>
 </form>
 </div>
-<br>
-<br>
-
+<div class="container" style="padding-bottom:8px;">
+<h2>Sales Rep List</h2>
 <table id ="myrealtable">
+
     <thead>
     <th>Rep ID</th>
     <th>First Name</th>
@@ -121,20 +122,29 @@
         
     </tbody>
 </table>
-<button type="button" onclick ="sales_com()">sales and commission</button>
+</div>
+
 <script>
+// auto build table and calculate commission on load
   build_table('mytable', RepList, 'Rep');
   sales_com()
 </script>
-<button type="button" onclick ="con_table('myrealtable', 'RepList', 'Rep')">update table</button>
-<button type="button" onclick ="window.localStorage.clear();">clear storage</button>
 
+<button type="button" style = "margin: 0 50px 0; display:block; width:25%; " onclick ="con_table('myrealtable', 'RepList', 'Rep')">Update the Table</button>
 <br>
+<div class="container" style = "padding-top:50px";>
+<form id="del_rep" onsubmit="del_rep()">
+  <p><h2>Delete a Rep</h2></p>
+<!--adding some blank spaces with &nbsp-->
+  <p><label>Enter the RepID <br> For Example: SR00001</style></label><input type="text" name="rID" required></input> &nbsp&nbsp&nbsp <button style = "float:left;"type="submit">Delete</button></p>
+</form>
+</div>
 
-
-
+<button style = "margin:0 auto; display:block; width:100%; background-color:orange;" type="button" onclick = "window.location='Login_02.html';return false;">Log Out</button>
 <br>
-<button style = "margin:0 auto; display:block; width:100%; background-color:orange;" type="button" onclick = "window.location='localstorage_test.html';return false;">Log Out</button>
+<p style = "text-align: center;display:block;font-weight:bolder;">Warning, doing so will delete all the existing reps!!</p>
+<button type="button" style = "margin:0 auto; display:block;  background-color:red; width: 100%;" onclick ="window.localStorage.removeItem('RepList'); location.reload();">Delete All Reps</button>
+
 
 </form>
     </body>

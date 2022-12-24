@@ -1,8 +1,11 @@
 // JavaScript File
+//loading everything from localstorage
+var RepList = s_read("RepList");
+var DealsList = s_read("DealsList");
+// identifies which rep is logged in
+var username = s_read("username");
 
-
-var DealsList = s_read("DealsList")
-
+// add a placeholder so the page doens't break
 if(DealsList == null){
     var DealsList = [];
     const placeholder = {a:"You found me!"};
@@ -10,9 +13,12 @@ if(DealsList == null){
     s_save("DealsList", DealsList)
 }
 
+// Add new deals using the form
 function add_new_object(array,key,object){
     var dealID = document.forms["myForm"]["dealID"].value;
-    var repID = document.forms["myForm"]["rID"].value;
+    // var repID = document.forms["myForm"]["rID"].value;
+    // this is depreicated because we were able to dynamically link the repID to the login ID :)
+    var repID = username;
     var bname = document.forms["myForm"]["bname"].value;
     var c1n = document.forms["myForm"]["c1n"].value;
     var c1p = document.forms["myForm"]["c1p"].value;
@@ -28,5 +34,33 @@ function add_new_object(array,key,object){
     array.push(new object(dealID,repID,bname,c1n,c1p,c2n,c2p,dtype,dsizem,dsizeu,sdate,cdate,stage,note));
     s_save(key, array);
 }
+// returns the name of the rep based on their ID
+function rep_info(uname, property){
 
-// sales_com()
+    const account = RepList.find(account => {
+      return account.ID == uname;
+      });
+    if(account === undefined){
+        return false;
+    }else if(property == "name"){
+        return account.fname + " " + account.lname;
+    } else {
+        return account[property];
+    }}
+    
+// this is used to hold temperorary information of individual reps, this will then be pushed into the masterlist which only the sales manager can view
+// this is done so when reps edit the table they do not override the master
+var temp = []
+
+// make sure the rep only sees their OWN deals
+function view_rep_deal(){
+    var repID = username
+    const placeholder = {a:"You found me!"};
+// parsing through array to retrieve sum of a property, modified to work with our array and object types
+    temp = DealsList.filter(deal => deal.repID == repID);
+// pushing placeholder to the top so error will be caught in build table
+    temp.unshift(placeholder);
+    s_save("temp",temp);
+    build_table('mytable', temp, 'Deal');
+}
+

@@ -16,11 +16,11 @@ width: 15%;
 border-radius: 10%;
 }
 
-  /* Add padding to containers */
-.container {
-  padding-left: 25px;
-  padding-bottom: 200px;
-}
+    /* Add padding to containers */
+  .container {
+    padding-left: 50px;
+    padding-bottom: 50px;
+  }
 
   
     form  { display: table;      }
@@ -28,18 +28,18 @@ border-radius: 10%;
     label { display: table-cell; 
             padding-right: 50px; }
     input { display: table-cell; }
-  
+    
   /* Our buttons matches the grammarly colour :)*/
     button {
       background-color: #15c39a;
       color: white;
       padding: 14px 20px;
-      margin: 8px 0;
+      margin: 10 0;
       border: none;
       cursor: pointer;
       width: 250px;
+      font-weight:bold;
     }
-    
     button:hover {
       opacity: 0.6;
     }
@@ -58,6 +58,8 @@ label{
     font-weight: bold;
 }
 
+h1{padding-left: 50px;}
+
 </style>
 
 
@@ -71,9 +73,11 @@ label{
 <div class="imgcontainer">
   <img src="grammarly.webp" alt="Avatar" class="avatar">
 </div>
-<h1> Welcome Back to the Deals View</h1>
+<h1> Welcome Back to Deals Management</h1>
+<button style = "margin: 0 50px 0; display:block; width:25%; " type="button" onclick = "window.location='Sales_Manager_Rep.html';return false;">Go to Rep View</button>
 <br>
 <br>
+<div class = "container">
 <table id ="myrealtable">
   <h2> Consolidated Deals Table </h2>
     <thead>
@@ -99,26 +103,22 @@ label{
     </tbody>
     </div>
 </table>
+<button type="button" onclick ="con_table('myrealtable', 'DealsList', 'Deal')">update table</button>
+</div>
 
-
-<button type="button" onclick ="cal_sales('SR00001')">display total sales</button>
 <script>
   build_table('mytable', DealsList, 'Deal');
   
 </script>
-<button type="button" onclick ="con_table('myrealtable', 'DealsList', 'Deal')">update table</button>
-<button type="button" onclick ="window.localStorage.clear();">clear storage</button>
-<br>
-<br>
-<br>
-<br>
+<div class = "container">
 <form id="single_rep" onsubmit="view_ind_rep();">
   <p><h2>View an Individual Rep</h2></p>
 <!--adding some blank spaces with &nbsp-->
   <p><label>Enter the RepID <br> For Example: SR00001</style></label><input type="text" name="rID" required></input> &nbsp&nbsp&nbsp <button type="submit">Search</button></p>
 </form>
+   </div>
 
-
+<div class = "container">
 <table id ="ind_rep_table_real">
     <thead>
     <th>Deal ID</th>
@@ -137,13 +137,11 @@ label{
     <th>Deal Note</th>
     
     </thead>
-    <div style="overflow-x:auto;">
     <tbody id="ind_rep_table">
         
     </tbody>
-    </div>
 </table>
-
+</div>
 
     </body>
 </html>

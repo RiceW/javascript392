@@ -25,10 +25,10 @@ function submit_button(){
 
     if(auth_user(usernameL,passwordL,RepList) == true){
         s_item("username",usernameL);
-        window.location='Change_Password.html';
+        location='Change_Password.html';
         event.preventDefault();
     } else if (auth_user(usernameL,passwordL,ManList) == true){
-        // window.location = "Sales_Rep.html";
+        location = "Old_Sales_Rep.html";
         event.preventDefault();
     } else {
         alert("You have entered an invalid username or password");

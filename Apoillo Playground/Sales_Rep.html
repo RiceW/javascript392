@@ -1,9 +1,9 @@
 
 <style>
-    table, th, td {
-  border: 1px solid black;
-}
-
+  table {
+    border: 1px solid black;
+    width: 100%;
+  }
 /* Center the avatar image inside this container */
 .imgcontainer {
   text-align: left;
@@ -17,33 +17,33 @@ border-radius: 10%;
 
   /* Add padding to containers */
 .container {
-  padding: 25px;
+  padding-left: 50px;
   padding-bottom: 50px;
 }
 
+
+form  { display: table;      }
+p     { display: table-row;  }
+label { display: table-cell; 
+        padding-right: 50px;
+        padding-left: 50px;}
+input { display: table-cell; }
+
+/* Our buttons matches the grammarly colour :)*/
+button {
+  background-color: #15c39a;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 250px;
+}
+
+button:hover {
+  opacity: 0.6;
+}
   
-    form  { display: table;      }
-    p     { display: table-row;  }
-    label { display: table-cell; 
-            padding-right: 50px;
-            padding-left: 50px;}
-    input { display: table-cell; }
-  
-  /* Our buttons matches the grammarly colour :)*/
-    button {
-      background-color: #15c39a;
-      color: white;
-      padding: 14px 20px;
-      margin: 8px 0;
-      border: none;
-      cursor: pointer;
-      width: 250px;
-    }
-    
-    button:hover {
-      opacity: 0.6;
-    }
-    
     /* Full-width inputs */
 textarea, select, input {
   width: 100%;
@@ -62,9 +62,17 @@ label{
     font-weight: bold;
 }
 
-input{
-  width:auto;
-}
+  input {
+    width: auto,
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+
+h1{padding-left: 50px;}
+
 </style>
 
 
@@ -78,12 +86,20 @@ input{
 <div class="imgcontainer">
   <img src="grammarly.webp" alt="Avatar" class="avatar">
 </div>
-<h1> Welcome Back </h1>
+
+<h1 id="greet"> Welcome Back </h1>
+
+<div class="container">
+<p id = "sales">Your Total Sales are: </p>
+<p id= "commission">Your Total Commission is:</p>
+</div>
 
 <div class="container">
 <form id="myForm" onSubmit = "add_new_object(DealsList, 'DealsList', Deals)">
+  <h2>Add a New Deal</h2>
   <p><label>Deal ID:</label><input type="text" name="dealID" required></input>
-  <label>Rep ID:</label><input type="text" name="rID" required></input>
+  <!--depricated beacuse it is now dynamic-->
+  <!--<label>Rep ID:</label><input type="text" name="rID" required></input>-->
   </p><p><label>Business Name:</label> <input type="text" name="bname" required></input>
   </p><p><label>Contact 1 Name:</label> <input type="text" name="c1n" required></input>
   <label>Contact 1 Phone Number:</label> <input type="number" name="c1p" required></input>
@@ -104,16 +120,16 @@ input{
       <option value = "Evaluation">Evaluation</option>
       <option value = "Purchase">Purchase</option>
       <option value = "Closed">Closed</option></select>
-  <label>Deal Note</label> <textarea name="notes" rows ="10" cols="30" value = "blank"></textarea>
-  </p><p>
-  <br>
-  <button type="submit">Add This Deal</button>
+  <label>Deal Note</label> <textarea name="notes" rows ="10" cols="30" placeholder = "Enter your notes here"></textarea>
+  </p>
+  <button type="submit" style="margin-left:50px; margin-top: 12px;">Add This Deal</button>
 </form>
 </div>
-<br>
 
-
+<!--table containing the deals for the specific rep-->
+<div class="container">
 <table id ="myrealtable">
+<h2>Deal List</h2>
     <thead>
     <th>Deal ID</th>
     <th>Rep ID</th>
@@ -137,14 +153,17 @@ input{
     </tbody>
     </div>
 </table>
+</div>
 
-
-<button type="button" onclick ="cal_sales('SR00001')">display total sales</button>
+<!--onload scripts for this page, auto loads name, total sales and commission for the corresponding rep-->
 <script>
-  build_table('mytable', DealsList, 'Deal');
-  
+  view_rep_deal();
+  document.getElementById("greet").innerHTML = "Welcome Back" + " " + rep_info(username, "name");
+  document.getElementById("sales").innerHTML = "Your Total Sales are: $" + rep_info(username, "ts");
+  document.getElementById("commission").innerHTML = "Your Total Commissions are: $" + rep_info(username, "tc");
+  sales_com();
 </script>
-<button type="button" onclick ="con_table('myrealtable', 'DealsList', 'Deal')">update table</button>
-<button type="button" onclick ="window.localStorage.clear();">clear storage</button>
+
+<button style = "margin:0 auto; display:block; width:100%; background-color:orange; margin-top: 10px;" type="button" onclick = "window.location='Login_02.html';return false;">Log Out</button>
     </body>
 </html>

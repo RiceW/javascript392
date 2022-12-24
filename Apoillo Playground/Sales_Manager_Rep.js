@@ -33,6 +33,12 @@ function add_new_object(array,key,object){
     s_save(key, array);
 }
 
-
-
+//leave the rest   the rep entered hence deleting the rep
+function del_rep(){
+    var array = RepList;
+    var repid = document.forms["del_rep"]["rID"].value;
+    array = array.filter( obj => obj.ID !== repid);
+    s_save("RepList",array);
+    location.reload();
+}
 

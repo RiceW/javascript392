@@ -101,7 +101,7 @@ function build_table(tableid, array, type){
             }}
         else if(type ==="Deal"){
             while (row_count < array.length){
-                    document.getElementById(tableid).innerHTML += "<tr><td><input type ='text' value=" + i_p(array,row_count,0) + " " + "</input>"+ "</td><td>" + "<input type ='text' value=" + i_p(array,row_count,1) + ">" + "</input>" +  "</td><td>" + "<input type ='text' value=" + i_p(array,row_count,2) + " " + "</input>" + "</td><td>" + "<input type ='text' value=" + i_p(array,row_count,3) + " " + "</input>"+ "</td><td>" + "<input type ='number' value=" + i_p(array,row_count,4) + " " + "</input>" +  "</td><td>" + "<input type ='text' value=" + i_p(array,row_count,5) + " " + "</input>" + "</td><td>" + "<input type ='number' value=" + i_p(array,row_count,6) + " " + "</input>"+ "</td><td>" + "<input type ='text' value=" + i_p(array,row_count,7) + " " + "</input>"+ "</td><td>" + "<input type ='number' value=" + i_p(array,row_count,8) + " " + "</input>"+ "</td><td>" + "<input type ='number' value=" + i_p(array,row_count,9) + " " + "</input>"+ "</td><td>" + "<input type ='date' value=" + i_p(array,row_count,10) + " " + "</input>"+ "</td><td>" + "<input type ='date' value=" + i_p(array,row_count,11) + " " + "</input>" +"</td><td>" + "<input type ='text' value=" + i_p(array,row_count,12) + " " + "</input>"+"</td><td>" + "<input type ='text' value=" + i_p(array,row_count,13) + " " + "</input>"+"</td></tr>";
+                    document.getElementById(tableid).innerHTML += "<tr><td><input type ='text' value=" + i_p(array,row_count,0) + " " + "</input>"+ "</td><td>" + "<input type ='text' value=" + i_p(array,row_count,1) + ">" + "</input>" +  "</td><td>" + "<input type ='text' value=" + i_p(array,row_count,2) + " " + "</input>" + "</td><td>" + "<input type ='text' value=" + i_p(array,row_count,3) + " " + "</input>"+ "</td><td>" + "<input type ='number' value=" + i_p(array,row_count,4) + " " + "</input>" +  "</td><td>" + "<input type ='text' value=" + i_p(array,row_count,5) + " " + "</input>" + "</td><td>" + "<input type ='number' value=" + i_p(array,row_count,6) + " " + "</input>"+ "</td><td>" + "<input type ='text' value=" + i_p(array,row_count,7) + " " + "</input>"+ "</td><td>" + "<input type ='number' value=" + i_p(array,row_count,8) + " " + "</input>"+ "</td><td>" + "<input type ='number' value=" + i_p(array,row_count,9) + " " + "</input>"+ "</td><td>" + "<input type ='date' value=" + i_p(array,row_count,10) + " " + "</input>"+ "</td><td>" + "<input type ='date' value=" + i_p(array,row_count,11) + " " + "</input>" +"</td><td>" + "<input type ='text' value=" + i_p(array,row_count,12) + " " + "</input>"+"</td><td>" + "<input type ='text' value=" + i_p(array,row_count,13) + " >" + "</input>"+"</td></tr>";
                 row_count +=1
                 }}       
     }}
@@ -120,14 +120,14 @@ function con_table(tableid, key, type){
             newarray.push(new SalesP(f_c_i(table,row_count,0),f_c_i(table,row_count,1),f_c_i(table,row_count,2),f_c_i(table,row_count,3),f_c_i(table,row_count,4),f_c_i(table,row_count,5),f_c_i(table,row_count,6),f_c_i(table,row_count,7),f_c_i(table,row_count,8)));
             row_count += 1;
             s_save(key, newarray);
-            window.location.reload();
+            location.reload();
         }
     } else if (type === "Deal"){
         while(row_count <= totalRowCount){
             newarray.push(new Deals(f_c_i(table,row_count,0),f_c_i(table,row_count,1),f_c_i(table,row_count,2),f_c_i(table,row_count,3),f_c_i(table,row_count,4),f_c_i(table,row_count,5),f_c_i(table,row_count,6),f_c_i(table,row_count,7),f_c_i(table,row_count,8),f_c_i(table,row_count,9),f_c_i(table,row_count,10),f_c_i(table,row_count,11),f_c_i(table,row_count,12),f_c_i(table,row_count,13)));
             row_count += 1;
             s_save(key, newarray);
-            window.location.reload();
+            location.reload();
         }
     } else {
         console.log("Incorrect type")
@@ -161,6 +161,8 @@ function sales_com(){
 
     RepList.forEach(rep =>{
         if (rep["ID"] === undefined){}
+// catching the placeholder so the loop starts and end at the correct position
+        else if (rep["a"] == "You found me!" ){}
         else{
         var commission = s_read("commission");
         rep["ts"] = cal_sales(rep["ID"])
