@@ -1,9 +1,5 @@
 
 <style>
-  /* Bordered form */
-form {
-  border: 3px solid #f1f1f1;
-}
 
 /* Full-width inputs */
 input[type=text], input[type=password] {
@@ -36,7 +32,7 @@ button:hover {
 /* Center the avatar image inside this container */
 .imgcontainer {
   text-align: center;
-  margin: 24px 0 12px 0;
+  margin: 24px 0 0 0;
 }
 
 /* Avatar image */
@@ -56,11 +52,14 @@ img.avatar {
 <html>
 <body>
   <script type="text/javascript", src="preload.js"></script>
-  <script type="text/javascript", src="Login_02.js"></script>
+  <script type="text/javascript", src="Login.js"></script>
   
     <div class="imgcontainer">
-      <img src="grammarly.webp" alt="Avatar" class="avatar">
+<!--I made an animated logo :)-->
+      <img src="animated_logo.gif" style = "width: 200px; display: inline-block; position: relative; bottom: 165px; right: 50px">
+      <img src="grammarly.webp"style = "width: 650px; display: inline-block"; alt="Avatar" class="avatar">
     </div>
+
     
 <!--Nothing much to comment here, just a simple login form-->
   <form id="login_form" onsubmit = "submit_button();">

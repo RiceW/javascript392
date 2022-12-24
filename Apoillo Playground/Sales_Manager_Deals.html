@@ -75,9 +75,11 @@
   <img src="grammarly.webp" alt="Avatar" class="avatar">
 </div>
 <h1> Welcome Back to Deals Management</h1>
+<!--button to jump between pages-->
 <button style = "margin: 0 50px 0; display:block; width:25%; " type="button" onclick = "window.location='Sales_Manager_Rep.html';return false;">Go to Rep View</button>
 <br>
 <br>
+<!--Shows all the deals-->
 <div class = "container">
 <table id ="myrealtable">
   <h2> Consolidated Deals Table </h2>
@@ -107,6 +109,7 @@
 <button type="button" onclick ="con_table('myrealtable', 'DealsList', 'Deal')">update table</button>
 </div>
 
+<!--onload return the table and calculates sales/commission-->
 <script>
   build_table('mytable', DealsList, 'Deal');
   sales_com()
@@ -119,6 +122,7 @@
 </form>
    </div>
 
+<!--shows filtered view of specific rep depending on their repID-->
 <div class = "container">
 <table id ="ind_rep_table_real">
     <thead>

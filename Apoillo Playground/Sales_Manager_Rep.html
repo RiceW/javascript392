@@ -39,14 +39,14 @@
     width: 250px;
     font-weight:bold;
   }
-  
+/* Add a hover effect for buttons very cool :) */ 
   button:hover {
     opacity: 0.6;
   }
   
-  /* Full-width inputs */
+/* Full-width inputs */
   input {
-    width: 100%;
+    width: auto;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
@@ -58,9 +58,8 @@
       font-weight: bold;
   }
  h1{padding-left: 50px;}
+ 
 </style>
-
-
 
 <!DOCTYPE html>
 <html>
@@ -73,6 +72,7 @@
 </div>
 <h1> Welcome Back to Rep Management</h1>
 <br>
+<!--button to jump between pages-->
 <button style = "margin: 0 50px 0; display:block; width:25%; " type="button" onclick = "window.location='Sales_Manager_Deals.html';return false;">Go to Deals View</button>
 <br>
 <div class="container">
@@ -86,7 +86,7 @@
         <button type = "submit">Store Formula</button>
     </form>
 </div>
-
+<!--form to take inputs to create a new sales rep-->
 <div class="container">
 <form id="myForm" onSubmit = "add_new_object(RepList, 'RepList', SalesP)">
   <h2>Add a New Sales Rep</h2>
@@ -104,8 +104,9 @@
 </div>
 <div class="container" style="padding-bottom:8px;">
 <h2>Sales Rep List</h2>
-<table id ="myrealtable">
 
+<!--Displays all the Sales Reps-->
+<table id ="myrealtable">
     <thead>
     <th>Rep ID</th>
     <th>First Name</th>
@@ -127,21 +128,24 @@
 <script>
 // auto build table and calculate commission on load
   build_table('mytable', RepList, 'Rep');
-
 </script>
 
 <button type="button" style = "margin: 0 50px 0; display:block; width:25%; " onclick ="con_table('myrealtable', 'RepList', 'Rep')">Update the Table</button>
 <br>
+
+<!--delete specific rep-->
 <div class="container" style = "padding-top:50px";>
 <form id="del_rep" onsubmit="del_rep()">
   <p><h2>Delete a Rep</h2></p>
 <!--adding some blank spaces with &nbsp-->
-  <p><label>Enter the RepID <br> For Example: SR00001</style></label><input type="text" name="rID" required></input> &nbsp&nbsp&nbsp <button style = "float:left;"type="submit">Delete</button></p>
+  <p><label>Enter the RepID <br> For Example: SR00001</style></label><input type="text" name="rID" required></input> &nbsp&nbsp&nbsp <button style = "float:left; margin-left:50px;"type="submit">Delete</button></p>
 </form>
 </div>
-
-<button style = "margin:0 auto; display:block; width:100%; background-color:orange;" type="button" onclick = "window.location='Login_02.html';return false;">Log Out</button>
+<!--allow user to log out-->
+<button style = "margin:0 auto; display:block; width:100%; background-color:orange;" type="button" onclick = "window.location='Login.html';return false;">Log Out</button>
 <br>
+
+<!--delete all reps button-->
 <p style = "text-align: center;display:block;font-weight:bolder;">Warning, doing so will delete all the existing reps!!</p>
 <button type="button" style = "margin:0 auto; display:block;  background-color:red; width: 100%;" onclick ="window.localStorage.removeItem('RepList'); location.reload();">Delete All Reps</button>
 
