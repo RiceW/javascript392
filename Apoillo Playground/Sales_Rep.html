@@ -34,11 +34,13 @@ button {
   background-color: #15c39a;
   color: white;
   padding: 14px 20px;
-  margin: 8px 0;
+  margin: 10 0;
   border: none;
   cursor: pointer;
   width: 250px;
+  font-weight:bold;
 }
+  
 
 button:hover {
   opacity: 0.6;
@@ -62,14 +64,14 @@ label{
     font-weight: bold;
 }
 
-  input {
-    width: auto,
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-  }
+input {
+  width: auto,
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
 
 h1{padding-left: 50px;}
 
@@ -158,10 +160,11 @@ h1{padding-left: 50px;}
 <!--onload scripts for this page, auto loads name, total sales and commission for the corresponding rep-->
 <script>
   view_rep_deal();
+  sales_com();
   document.getElementById("greet").innerHTML = "Welcome Back" + " " + rep_info(username, "name");
   document.getElementById("sales").innerHTML = "Your Total Sales are: $" + rep_info(username, "ts");
   document.getElementById("commission").innerHTML = "Your Total Commissions are: $" + rep_info(username, "tc");
-  sales_com();
+
 </script>
 
 <button style = "margin:0 auto; display:block; width:100%; background-color:orange; margin-top: 10px;" type="button" onclick = "window.location='Login_02.html';return false;">Log Out</button>

@@ -1,8 +1,8 @@
 // JavaScript File
-
+// reading everything from local storage
 var RepList = s_read("RepList");
 var DealsList = s_read("DealsList");
-console.log(DealsList);
+// adding a placeholder when the array is empty to prevent code from breaking
 if(RepList == null){
     var RepList = [];
     const placeholder = {a:"You found me!"};
@@ -10,6 +10,8 @@ if(RepList == null){
     s_save("RepList", RepList);
 }
 
+// storing the commision formula and also displaying it on screen so the manager knows what they set
+// they can modify if they made a mistake
 function store_com(){
     var variable = document.forms["commission"]["variable"].value;
     var fixed = document.forms["commission"]["fixed"].value;
@@ -21,6 +23,7 @@ function store_com(){
     event.preventDefault();
 }
 
+// this adds new reps by taking inputs from the form on the HTML
 function add_new_object(array,key,object){
     var rID = document.forms["myForm"]["rID"].value;
     var fname = document.forms["myForm"]["fname"].value;
@@ -33,10 +36,11 @@ function add_new_object(array,key,object){
     s_save(key, array);
 }
 
-//leave the rest   the rep entered hence deleting the rep
+//leave all the reps besides the rep entered, hence deleting the rep from the list
 function del_rep(){
     var array = RepList;
     var repid = document.forms["del_rep"]["rID"].value;
+// filtering out the repID entered and delete it from the master list
     array = array.filter( obj => obj.ID !== repid);
     s_save("RepList",array);
     location.reload();

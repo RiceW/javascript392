@@ -1,11 +1,11 @@
 // JavaScript File
-//loading everything from localstorage
+// reading everything from local storage
 var RepList = s_read("RepList");
 var DealsList = s_read("DealsList");
 // identifies which rep is logged in
 var username = s_read("username");
 
-// add a placeholder so the page doens't break
+// adding a placeholder when the array is empty to prevent code from breaking
 if(DealsList == null){
     var DealsList = [];
     const placeholder = {a:"You found me!"};
@@ -13,7 +13,7 @@ if(DealsList == null){
     s_save("DealsList", DealsList)
 }
 
-// Add new deals using the form
+// Add new deals using the form on the HTML
 function add_new_object(array,key,object){
     var dealID = document.forms["myForm"]["dealID"].value;
     // var repID = document.forms["myForm"]["rID"].value;
@@ -33,10 +33,10 @@ function add_new_object(array,key,object){
     var note = document.forms["myForm"]["notes"].value;
     array.push(new object(dealID,repID,bname,c1n,c1p,c2n,c2p,dtype,dsizem,dsizeu,sdate,cdate,stage,note));
     s_save(key, array);
+    
 }
 // returns the name of the rep based on their ID
 function rep_info(uname, property){
-
     const account = RepList.find(account => {
       return account.ID == uname;
       });
@@ -48,15 +48,13 @@ function rep_info(uname, property){
         return account[property];
     }}
     
-// this is used to hold temperorary information of individual reps, this will then be pushed into the masterlist which only the sales manager can view
-// this is done so when reps edit the table they do not override the master
+// this is used to hold temperorary information of individual reps, this allows the table to only display a portion of the master list
 var temp = []
 
 // make sure the rep only sees their OWN deals
 function view_rep_deal(){
     var repID = username
     const placeholder = {a:"You found me!"};
-// parsing through array to retrieve sum of a property, modified to work with our array and object types
     temp = DealsList.filter(deal => deal.repID == repID);
 // pushing placeholder to the top so error will be caught in build table
     temp.unshift(placeholder);
